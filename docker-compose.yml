@@ -1,8 +1,10 @@
-version: '3.9'
+networks:
+  mi-red-mysql:
+  
 services:
   mysql:
     image: mysql:8.3.0
-    container_name: mysql
+    container_name: mysql_normal
     env_file:
       - ./.env
     environment:
@@ -11,3 +13,7 @@ services:
       - ${MYSQL_PORT}:3306
     volumes:
       - ./mysql-db-data:/var/lib/mysql
+    networks:
+      - mi-red-mysql
+
+      
